@@ -85,7 +85,7 @@ func main() {
 		},
 		cli.IntFlag{
 			Name:        "idleTime",
-			Value:       1,
+			Value:       3,
 			Usage:       "idleTime",
 			Destination: &idleTime,
 		},

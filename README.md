@@ -39,7 +39,7 @@ COMMANDS:
 GLOBAL OPTIONS:
    --host value      host (default: "127.0.0.1")
    --port value      port (default: 80)
-   --idleTime value  idleTime (default: 1)
+   --idleTime value  idleTime (default: 3)
    --count value     count (default: 10)
    --interval value  interval (default: 1)
    --help, -h        show help
