@@ -35,10 +35,12 @@ func do(host string, port, idleTime, count, interval int) error {
 		return err
 	}
 
+	log.Printf("connecting")
 	conn, err := net.DialTCP("tcp", nil, tcpAddr)
 	if err != nil {
 		return err
 	}
+	log.Printf("connected")
 	defer conn.Close()
 
 	idleTimeDuration := time.Duration(time.Duration(idleTime) * time.Second)
