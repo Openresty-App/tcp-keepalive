@@ -1,4 +1,7 @@
-# install
+# tcp-keepalive
+tcp keepalive measuring tool
+
+## install
 
 ```
 git clone https://github.com/Openresty-App/tcp-keepalive
@@ -15,7 +18,7 @@ CGO_ENABLED=0 GOOS=freebsd GOARCH=amd64 go build -o tcp-keepalive
 
 ```
 
-# Sample
+## Sample
 ```
 ./tcp-keepalive -h
 
