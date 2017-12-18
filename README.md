@@ -21,33 +21,42 @@ CGO_ENABLED=0 GOOS=freebsd GOARCH=amd64 go build -o tcp-keepalive
 
 ```
 
-## Example
+## measure
 ```
-[root@localhost tcp-keepalive]# ./tcp-keepalive -h
+#./tcp-keepalive help measure
 NAME:
-   tcp-keepalive - A new cli application
+   tcp-keepalive measure - Send tcp heart and statistic
 
 USAGE:
-   tcp-keepalive [global options] command [command options] [arguments...]
+   tcp-keepalive measure [command options] [arguments...]
 
-VERSION:
-   0.0.0
+OPTIONS:
+   --interface value, -i value  interface (default: "eth0")
+   --host value, -H value       host (default: "127.0.0.1")
+   --port value, -P value       port (default: 80)
+   --idleTime value             idleTime (default: 3)
+   --retranCount value          retranCount (default: 10)
+   --interval value             interval (default: 3)
 
-COMMANDS:
-     help, h  Shows a list of commands or help for one command
-
-GLOBAL OPTIONS:
-   --host value      host (default: "127.0.0.1")
-   --port value      port (default: 80)
-   --idleTime value  idleTime (default: 3)
-   --count value     count (default: 10)
-   --interval value  interval (default: 1)
-   --help, -h        show help
-   --version, -v     print the version
-
-[root@localhost tcp-keepalive]# ./tcp-keepalive --host www.baidu.com --port 80 --idleTime 10
-2017/12/09 14:50:53 connecting
-2017/12/09 14:50:53 connected
-2017/12/09 14:50:53 idleTime:10s, interval:1s, count:10
-2017/12/09 14:51:14 conn reset
+./tcp-keepalive measure -H 172.28.32.220 -P 8888 -i en5
 ```
+
+## probe
+```
+#./tcp-keepalive help probe
+NAME:
+   tcp-keepalive probe - Check whether the server supports heartbeat
+
+USAGE:
+   tcp-keepalive probe [command options] [arguments...]
+
+OPTIONS:
+   --interface value, -i value  interface (default: "eth0")
+   --host value, -H value       host (default: "127.0.0.1")
+   --port value, -P value       port (default: 80)
+   --idleTime value             idleTime (default: 3)
+   --retranCount value          retranCount (default: 10)
+
+./tcp-keepalive probe -H 172.28.32.220 -P 8888 -i en5
+```
+

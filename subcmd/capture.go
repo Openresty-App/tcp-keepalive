@@ -103,7 +103,7 @@ func newStatisticData(p gopacket.Packet) CaptureTcp {
 	return d
 }
 
-func tcpdump(device string, filter string, d chan Capture) {
+func tcpdump(device string, filter string, d chan Capture) error {
 	log.Printf("start tcpdmp device:%s, filter:%s", device, filter)
 	snapshotLen := 65535
 	promiscuous := false
@@ -111,14 +111,13 @@ func tcpdump(device string, filter string, d chan Capture) {
 
 	h, err := pcap.OpenLive(device, int32(snapshotLen), promiscuous, timeout)
 	if err != nil {
-		log.Printf("tcpdump: %s\n", err)
-		return
+		return err
 	}
 	defer h.Close()
 
 	if filter != "" {
 		if err := h.SetBPFFilter(filter); err != nil {
-			log.Printf("tcpdump: %s\n", err)
+			return err
 		}
 	}
 
@@ -134,4 +133,6 @@ func tcpdump(device string, filter string, d chan Capture) {
 
 		d <- newStatisticData(packet)
 	}
+
+	return nil
 }

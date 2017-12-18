@@ -54,15 +54,19 @@ func doHeartbeat(host string, port, idleTime, count, interval int, ch chan int) 
 }
 
 func doTcpDump(device string, filter string, ch chan int, cap chan Capture) {
-	tcpdump(device, filter, cap)
+	err := tcpdump(device, filter, cap)
+	if err != nil {
+		fmt.Println(err)
+		ch <- -1
+	}
 }
 
-func th(c *cli.Context) {
+func measure(c *cli.Context) {
 	host := c.String("host")
 	port := c.Int("port")
 	device := c.String("interface")
 	idleTime := c.Int("idleTime")
-	count := c.Int("count")
+	retranCount := c.Int("retranCount")
 	interval := c.Int("interval")
 
 	ch := make(chan int)
@@ -70,7 +74,7 @@ func th(c *cli.Context) {
 	met := utils.NewMetric()
 
 	filter := fmt.Sprintf("tcp and port %d", port)
-	go doHeartbeat(host, port, idleTime, count, interval, ch)
+	go doHeartbeat(host, port, idleTime, retranCount, interval, ch)
 
 	time.Sleep(time.Duration(idleTime) * time.Second)
 	go doTcpDump(device, filter, ch, cap)
@@ -96,13 +100,10 @@ L:
 					a = tcp.GetTime()
 					getOne = true
 				} else {
-					if getOne {
+					if getOne && int(tcp.GetSport()) == port {
 						b = tcp.GetTime()
 						met.Put(b.Sub(a).Seconds())
-					} else {
-						a = time.Time{}
 					}
-
 					getOne = false
 				}
 			}
@@ -111,7 +112,7 @@ L:
 			if c == 1 {
 				log.Printf("heartbeat restart ...")
 				time.Sleep(time.Second * 3)
-				go doHeartbeat(host, port, idleTime, count, interval, ch)
+				go doHeartbeat(host, port, idleTime, retranCount, interval, ch)
 			} else if c == -1 {
 				log.Printf("get error")
 
@@ -119,15 +120,14 @@ L:
 			}
 		}
 	}
-
-	log.Printf("max:%.6f, mean:%.6f, min:%.6f", met.Max(), met.Mean(), met.Min())
+	log.Printf("capture:%d, max:%.6f, mean:%.6f, min:%.6f", met.Len(), met.Max(), met.Mean(), met.Min())
 	return
 }
 
-func Th() cli.Command {
+func Measure() cli.Command {
 	return cli.Command{
-		Name:  "th",
-		Usage: "tcp heart and statistic",
+		Name:  "measure",
+		Usage: "Send tcp heart and statistic",
 		Flags: []cli.Flag{
 			cli.StringFlag{
 				Name:  "interface,i",
@@ -160,6 +160,6 @@ func Th() cli.Command {
 				Usage: "interval",
 			},
 		},
-		Action: th,
+		Action: measure,
 	}
 }
