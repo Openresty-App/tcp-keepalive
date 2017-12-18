@@ -1,4 +1,4 @@
-package main
+package subcmd
 
 import (
 	"errors"
@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"tcp-keepalive/utils"
 	"time"
 
 	"github.com/felixge/tcpkeepalive"
@@ -35,7 +36,7 @@ func heartbeat(host string, port, idleTime, count, interval int) error {
 	}
 
 	for {
-		if isClosed(conn) {
+		if utils.IsClosed(conn) {
 			return errors.New("conn reset")
 		}
 		time.Sleep(time.Second)
@@ -66,7 +67,7 @@ func th(c *cli.Context) {
 
 	ch := make(chan int)
 	cap := make(chan Capture)
-	met := NewMetric()
+	met := utils.NewMetric()
 
 	filter := fmt.Sprintf("tcp and port %d", port)
 	go doHeartbeat(host, port, idleTime, count, interval, ch)

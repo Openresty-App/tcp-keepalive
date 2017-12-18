@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"tcp-keepalive/subcmd"
 
 	"github.com/urfave/cli"
 )
@@ -13,7 +14,7 @@ func main() {
 	app.Version = "0.1.0"
 
 	app.Commands = []cli.Command{
-		Th(),
+		subcmd.Th(),
 	}
 
 	app.Run(os.Args)
