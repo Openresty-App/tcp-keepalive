@@ -8,9 +8,9 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	"tcp-keepalive/utils"
 	"time"
 
+	"github.com/Openresty-App/tcp-keepalive/utils"
 	"github.com/felixge/tcpkeepalive"
 	"github.com/urfave/cli"
 )

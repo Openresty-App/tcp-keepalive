@@ -2,8 +2,8 @@ package main
 
 import (
 	"os"
-	"tcp-keepalive/subcmd"
 
+	"github.com/Openresty-App/tcp-keepalive/subcmd"
 	"github.com/urfave/cli"
 )
 
