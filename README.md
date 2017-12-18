@@ -1,5 +1,5 @@
 # tcp-keepalive
-tcp keepalive measuring tool
+tcp keepalive probe or measure tool
 
 ## Depends
 * Linux
