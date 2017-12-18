@@ -150,9 +150,9 @@ func Th() cli.Command {
 				Usage: "idleTime",
 			},
 			cli.IntFlag{
-				Name:  "count",
+				Name:  "retranCount",
 				Value: 10,
-				Usage: "count",
+				Usage: "retranCount",
 			},
 			cli.IntFlag{
 				Name:  "interval",
