@@ -22,7 +22,7 @@ func probe(c *cli.Context) {
 	ch := make(chan int)
 	cap := make(chan Capture)
 
-	filter := fmt.Sprintf("tcp and port %d", port)
+	filter := fmt.Sprintf("host %s and tcp and port  %d", host, port)
 	go doHeartbeat(host, port, idleTime, retranCount, interval, ch)
 
 	time.Sleep(time.Duration(idleTime) * time.Second)

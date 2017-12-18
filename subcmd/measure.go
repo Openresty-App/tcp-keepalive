@@ -73,7 +73,7 @@ func measure(c *cli.Context) {
 	cap := make(chan Capture)
 	met := utils.NewMetric()
 
-	filter := fmt.Sprintf("tcp and port %d", port)
+	filter := fmt.Sprintf("host %s and tcp and port  %d", host, port)
 	go doHeartbeat(host, port, idleTime, retranCount, interval, ch)
 
 	time.Sleep(time.Duration(idleTime) * time.Second)
