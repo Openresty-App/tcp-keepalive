@@ -1,9 +1,11 @@
 # tcp-keepalive
 tcp keepalive measuring tool
 
-## depends
-[libpcap](http://www.tcpdump.org/)
-
+## Depends
+* Linux
+  * [libpcap](http://www.tcpdump.org/)
+* Windows
+  * [winpcap](https://www.winpcap.org/)
 
 ## Install
 
