@@ -27,7 +27,7 @@ CGO_ENABLED=0 GOOS=freebsd GOARCH=amd64 go build -o tcp-keepalive
 
 ```
 
-## measure
+## Measure
 ```
 #./tcp-keepalive help measure
 NAME:
@@ -47,7 +47,7 @@ OPTIONS:
 ./tcp-keepalive measure -H 172.28.32.220 -P 8888 -i en5
 ```
 
-## probe
+## Probe
 ```
 #./tcp-keepalive help probe
 NAME:
