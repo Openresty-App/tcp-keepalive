@@ -1,6 +1,10 @@
 # tcp-keepalive
 tcp keepalive measuring tool
 
+## depends
+[libpcap](http://www.tcpdump.org/)
+
+
 ## Install
 
 ```lang=shell
