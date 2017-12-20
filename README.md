@@ -59,6 +59,10 @@ OPTIONS:
 ./tcp-keepalive probe -H 172.28.32.220 -P 8888 -i en5
 ```
 
+## Team
+
+This tool is maintained by the following person(s) and a bunch of [awesome contributors](https://github.com/Openresty-App/tcp-keepalive/graphs/contributors).
+
 ## License
 
 [MIT License](./LICENSE)
