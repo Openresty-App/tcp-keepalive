@@ -16,18 +16,8 @@ go get github.com/urfave/cli
 git clone https://github.com/Openresty-App/tcp-keepalive
 cd tcp-keepalive
 
-linux:
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o tcp-keepalive
 
-macos:
-CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o tcp-keepalive
-
-freebsd:
-CGO_ENABLED=0 GOOS=freebsd GOARCH=amd64 go build -o tcp-keepalive
-
-solaris:
-CGO_ENABLED=0 GOOS=solaris GOARCH=amd64 go build -o tcp-keepalive
-
+go build -o tcp-keepalive
 ```
 
 ## Measure
