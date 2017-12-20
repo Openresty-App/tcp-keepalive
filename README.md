@@ -25,6 +25,9 @@ CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o tcp-keepalive
 freebsd:
 CGO_ENABLED=0 GOOS=freebsd GOARCH=amd64 go build -o tcp-keepalive
 
+solaris:
+CGO_ENABLED=0 GOOS=solaris GOARCH=amd64 go build -o tcp-keepalive
+
 ```
 
 ## Measure
