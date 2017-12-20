@@ -47,7 +47,7 @@ OPTIONS:
    --retranCount value          retranCount (default: 10)
    --interval value             interval (default: 3)
 
-./tcp-keepalive measure -H 172.28.32.220 -P 8888 -i en5
+./tcp-keepalive measure -H www.baidu.com -P 443
 ```
 
 ## Probe
@@ -66,7 +66,7 @@ OPTIONS:
    --idleTime value             idleTime (default: 3)
    --retranCount value          retranCount (default: 10)
 
-./tcp-keepalive probe -H 172.28.32.220 -P 8888 -i en5
+./tcp-keepalive probe -H www.baidu.com -P 443
 ```
 
 ## Team
