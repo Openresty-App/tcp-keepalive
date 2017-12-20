@@ -6,14 +6,6 @@ tcp keepalive probe or measure tool
   * [libpcap](http://www.tcpdump.org/)
 * Windows
   * [winpcap](https://www.winpcap.org/)
-  
-## Downloads
-* Linux
-  * [0.1.0](https://raw.githubusercontent.com/Openresty-App/pre-built-packages/master/tcp-keepalive/tcp-keepalive-Linux-x86_64_0.1.0)
-* macOS
-* Solaris
-* FreeBSD
-* Windows
 
 ## Install
 
@@ -27,6 +19,16 @@ cd tcp-keepalive
 
 go build -o tcp-keepalive
 ```
+
+## Downloads
+provides official pre-built packages
+
+* Linux
+  * [0.1.0](https://raw.githubusercontent.com/Openresty-App/pre-built-packages/master/tcp-keepalive/tcp-keepalive-Linux-x86_64_0.1.0)
+* macOS
+* Solaris
+* FreeBSD
+* Windows
 
 ## Measure
 ```
