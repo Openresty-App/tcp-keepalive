@@ -59,3 +59,8 @@ OPTIONS:
 ./tcp-keepalive probe -H 172.28.32.220 -P 8888 -i en5
 ```
 
+## License
+
+[MIT License](./LICENSE)
+
+
