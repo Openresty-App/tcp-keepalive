@@ -2,7 +2,7 @@
 tcp keepalive probe or measure tool
 
 ## Depends
-* Linux
+* Linux/macOS/Solaris/FreeBSD
   * [libpcap](http://www.tcpdump.org/)
 * Windows
   * [winpcap](https://www.winpcap.org/)
